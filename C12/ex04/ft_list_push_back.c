@@ -13,11 +13,16 @@ t_list	*ft_create_elem(void *data)
 void	ft_list_push_back(t_list **begin_list, void *data)
 {
 	t_list *new;
+	t_list *ptr;
 
 	new = ft_create_elem (data);
-	while (*begin_list)
+	if (!*begin_list)
 	{
-
+		*begin_list = new;
+		return ;
 	}
-
+	ptr = *begin_list;
+	while (ptr->next)
+		ptr = ptr->next;
+	ptr->next = new;
 }
